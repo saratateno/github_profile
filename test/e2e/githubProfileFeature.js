@@ -11,9 +11,13 @@ describe("Github Profile finder", function() {
     expect(browser.getTitle()).toEqual('Github user search');
   });
 
-  it('finds profiles', function(){
-    searchBox.sendKeys('spike01');
+  it('finds spike01 in an ElementArrayFinder of spikes', function(){
+    searchBox.sendKeys('spike0');
     searchButton.click();
-    expect(element(by.binding('user.login')).getText()).toEqual('spike01');
+    var profiles = element.all(by.repeater("user in searchCtrl.searchResult.items"));
+    expect(profiles.getText()).toContain('spike01');
   });
 });
+
+// browser.pause to debug - this will keep the browser window open; interact via
+// bash by entering 'repl' and using protractor webdriver syntax
