@@ -12,5 +12,10 @@ exports.config = {
       color: true,
       showStack: true
     }));
+
+    require('protractor-http-mock').config = {
+      rootDirectory: __dirname,
+      protractorConfig: 'conf.js'
+    };
   }
 };
